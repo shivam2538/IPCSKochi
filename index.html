@@ -790,6 +790,131 @@
             }
         }
     </style>
+    <style>
+        .vertical-social-bar {
+            position: fixed;
+            top: 50%;
+            left: 0;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            z-index: 1000;
+        }
+        
+        .social-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            background-color: white;
+            border-radius: 50%;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .social-icon img {
+            width: 24px;
+            height: 24px;
+        }
+        
+        .social-icon:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
+        }
+        
+        .social-icon.youtube:hover {
+            background-color: #FF0000;
+        }
+        
+        .social-icon.facebook:hover {
+            background-color: #3b5998;
+        }
+        
+        .social-icon.instagram:hover {
+            background-color: #E1306C;
+        }
+        
+        .social-icon.linkedin:hover {
+            background-color: #0077B5;
+        }
+        
+        .social-icon.gmail:hover {
+            background-color: #D44638;
+        }
+    </style>
+    <style>
+        /* General Navbar Styles */
+        
+        header {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: #1e3a8a;
+            /* Blue background */
+            color: white;
+        }
+        
+        header nav {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        header ul {
+            display: flex;
+            gap: 20px;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        
+        header ul li a {
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+            transition: color 0.3s ease-in-out;
+        }
+        
+        header ul li a:hover {
+            color: #feb47b;
+            /* Hover effect */
+        }
+        /* Mobile Menu */
+        
+        #mobile-menu {
+            display: none;
+            flex-direction: column;
+            gap: 10px;
+        }
+        /* Responsive Design */
+        
+        @media (max-width: 768px) {
+            #navbar {
+                display: none;
+                /* Hide desktop menu on small screens */
+            }
+            #mobile-menu {
+                display: flex;
+                /* Show mobile menu */
+            }
+        }
+        
+        @media (min-width: 769px) {
+            #mobile-menu {
+                display: none;
+                /* Hide mobile menu on larger screens */
+            }
+            #navbar {
+                display: flex;
+                /* Show desktop menu */
+            }
+        }
+    </style>
 
 </head>
 
@@ -801,27 +926,42 @@
             <!-- Logo or Title -->
             <div class="logo text-2xl font-bold">SmartMithra</div>
             <!-- Navigation Links -->
-            <ul class="flex space-x-10 ml-auto">
+            <ul id="navbar" class="hidden md:flex space-x-10 ml-auto">
                 <li><a href="#home" class="hover:underline">Home</a></li>
                 <li><a href="#about" class="hover:underline">About</a></li>
                 <li><a href="#services" class="hover:underline">Services</a></li>
                 <li><a href="#contact-footer" class="hover:underline">Contact</a></li>
             </ul>
+            <!-- Hamburger Menu for Mobile -->
+            <button id="menu-toggle" class="md:hidden text-white text-2xl">
+                ☰
+            </button>
         </nav>
+        <!-- Mobile Menu -->
+        <ul id="mobile-menu" class="hidden flex-col space-y-4 bg-blue-600 text-white p-4">
+            <li><a href="#home" class="hover:underline">Home</a></li>
+            <li><a href="#about" class="hover:underline">About</a></li>
+            <li><a href="#services" class="hover:underline">Services</a></li>
+            <li><a href="#contact-footer" class="hover:underline">Contact</a></li>
+        </ul>
     </header>
 
-    <!-- Vertical Social Media Icons on the Left -->
-    <aside class="fixed top-400 left-0 h-full  text-white p-4 flex flex-col items-center shadow-lg">
-        <a href="https://wa.me/your-number" target="_blank" class="hover:opacity-80 mb-4">
-            <img src="https://img.icons8.com/color/48/000000/whatsapp.png" alt="WhatsApp" class="w-8 h-8">
+    <div class="vertical-social-bar">
+        <a href="https://youtube.com/@smartmithraautomation?si=wtE0m-oQRAM1x-PW " target="_blank" class="social-icon youtube">
+            <img src="https://img.icons8.com/color/48/000000/youtube-play.png" alt="YouTube">
         </a>
-        <a href="https://www.instagram.com/your-profile" target="_blank" class="hover:opacity-80 mb-4">
-            <img src="https://img.icons8.com/fluency/48/000000/instagram-new.png" alt="Instagram" class="w-8 h-8">
+        <a href="https://www.facebook.com/share/1ELQMr32bg/?mibextid=wwXIfr" target="_blank" class="social-icon facebook">
+            <img src="https://img.icons8.com/color/48/000000/facebook-new.png" alt="Facebook">
         </a>
-        <a href="mailto:your-email@example.com" class="hover:opacity-80 mb-4">
-            <img src="https://img.icons8.com/fluency/48/000000/new-post.png" alt="Message" class="w-8 h-8">
+        <a href="https://www.instagram.com/your-profile" target="_blank" class="social-icon instagram">
+            <img src="https://img.icons8.com/color/48/000000/instagram-new.png" alt="Instagram">
         </a>
-    </aside>
+        <a href="http://linkedin.com/company/smart-mithra-automation" target="_blank" class="social-icon linkedin">
+            <img src="https://img.icons8.com/color/48/000000/linkedin.png" alt="LinkedIn">
+        </a>
+
+
+    </div>
 
     <!-- Main Content -->
 
@@ -835,7 +975,8 @@
                 <h1 class="text-4xl font-bold text-blue-500 animate-zoom">Your Partner in Intelligent Living</h1>
                 <!-- Paragraph with Erase-In Effect -->
                 <p class="mt-4 text-lg typewriter">Transform your space with smart automation solutions.</p>
-                <a href="#book-demo" class="mt-6 inline-block bg-yellow-500 text-white px-6 py-3 rounded-full shadow-md hover:bg-yellow-600">Book a Demo</a>
+                <!-- Updated Button -->
+                <a href="tel:+919072286664" class="mt-6 inline-block bg-yellow-500 text-white px-6 py-3 rounded-full shadow-md hover:bg-yellow-600">Call Now</a>
             </div>
         </section>
 
@@ -955,17 +1096,17 @@
                 <div class="review">
                     <img src="https://randomuser.me/api/portraits/men/1.jpg" alt="User 1">
                     <p>"Amazing service! SmartMithra made my home truly smart."</p>
-                    <p>- John Doe</p>
+                    <p>- Shivam</p>
                 </div>
                 <div class="review">
                     <img src="https://randomuser.me/api/portraits/women/2.jpg" alt="User 2">
                     <p>"Great experience, seamless automation solutions."</p>
-                    <p>- Sarah Lee</p>
+                    <p>- Adarsh</p>
                 </div>
                 <div class="review">
                     <img src="https://randomuser.me/api/portraits/men/3.jpg" alt="User 3">
                     <p>"Highly recommended for smart home automation!"</p>
-                    <p>- Michael Smith</p>
+                    <p>- Mamtha reddy</p>
                 </div>
             </div>
         </div>
@@ -1026,11 +1167,15 @@
             button.addEventListener('click', (event) => {
                 event.preventDefault();
 
-                const whatsappNumber = event.target.getAttribute('data-whatsapp');
+                const whatsappNumber = button.getAttribute('data-whatsapp'); // Get the WhatsApp number
                 const message = 'I want to order your services. Please provide more details.';
 
-                const whatsappUrl = `https://api.whatsapp.com/send?phone=${+91 9072286664}&text=${encodeURIComponent(message)}`;
-                window.location.href = whatsappUrl;
+                if (whatsappNumber) {
+                    const whatsappUrl = `https://api.whatsapp.com/send?phone=${whatsappNumber}&text=${encodeURIComponent(message)}`;
+                    window.location.href = whatsappUrl; // Redirect to WhatsApp
+                } else {
+                    alert('WhatsApp number is not available.');
+                }
             });
         });
 
@@ -1043,11 +1188,15 @@
                     navigator.geolocation.getCurrentPosition((position) => {
                         const latitude = position.coords.latitude;
                         const longitude = position.coords.longitude;
-                        const whatsappNumber = event.target.getAttribute('data-whatsapp');
+                        const whatsappNumber = button.getAttribute('data-whatsapp'); // Get the WhatsApp number
                         const message = `Here is my live location: https://www.google.com/maps?q=${latitude},${longitude}`;
 
-                        const whatsappUrl = `https://api.whatsapp.com/send?phone=${+91 9072286664}&text=${encodeURIComponent(message)}`;
-                        window.location.href = whatsappUrl;
+                        if (whatsappNumber) {
+                            const whatsappUrl = `https://api.whatsapp.com/send?phone=${whatsappNumber}&text=${encodeURIComponent(message)}`;
+                            window.location.href = whatsappUrl; // Redirect to WhatsApp
+                        } else {
+                            alert('WhatsApp number is not available.');
+                        }
                     }, () => {
                         alert('Unable to retrieve your location. Please enable location services.');
                     });
@@ -1055,6 +1204,23 @@
                     alert('Geolocation is not supported by your browser.');
                 }
             });
+        });
+
+        // Function to handle "Make Payment" button click
+        document.querySelectorAll('.btn-payment').forEach((button) => {
+            button.addEventListener('click', (event) => {
+                event.preventDefault();
+                alert('Payment functionality is not implemented yet.');
+            });
+        });
+    </script>
+
+    <script>
+        const menuToggle = document.getElementById("menu-toggle");
+        const mobileMenu = document.getElementById("mobile-menu");
+
+        menuToggle.addEventListener("click", () => {
+            mobileMenu.classList.toggle("hidden");
         });
     </script>
 
